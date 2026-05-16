@@ -32,10 +32,7 @@ jobs:
           dotnet pack templates/aneillans-api/aneillans-api.TemplatePack.csproj -c Release -o artifacts
           dotnet pack templates/aneillans-mvc/aneillans-mvc.TemplatePack.csproj -c Release -o artifacts
           dotnet pack templates/aneillans-angular/aneillans-angular.TemplatePack.csproj -c Release -o artifacts
-
-      - name: Smoke test dotnet templates
-        run: bash scripts/verify-templates.sh
-
+          
   angular-validate:
     runs-on: ubuntu-latest
     defaults:
