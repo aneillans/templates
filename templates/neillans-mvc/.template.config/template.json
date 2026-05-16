@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Neillans",
+  "classifications": ["Web", "MVC", "OIDC", "Docker"],
+  "identity": "Neillans.Templates.Mvc",
+  "name": "Neillans MVC Template",
+  "shortName": "neillans-mvc",
+  "sourceName": "MvcHost",
+  "preferNameDirectory": true
+}

@@ -17,20 +17,26 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
+      - name: Restore
+        run: dotnet restore TemplateKit.sln
+
+      - name: Build
+        run: dotnet build TemplateKit.sln -c Release --no-restore
+
       - name: Pack building blocks
         run: |
-          dotnet pack src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj -c Release -o artifacts
-          dotnet pack src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj -c Release -o artifacts
+          dotnet pack src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj -c Release -o artifacts
+          dotnet pack src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj -c Release -o artifacts
 
       - name: Pack templates
         run: |
-          dotnet pack templates/aneillans-api/aneillans-api.TemplatePack.csproj -c Release -o artifacts
-          dotnet pack templates/aneillans-mvc/aneillans-mvc.TemplatePack.csproj -c Release -o artifacts
-          dotnet pack templates/aneillans-angular/aneillans-angular.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-api/neillans-api.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-mvc/neillans-mvc.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-angular/neillans-angular.TemplatePack.csproj -c Release -o artifacts
 
       - name: Push to ProGet
         env:
-          PROGET_NUGET_SOURCE: ${{ secrets.PROGET_NUGET_SOURCE }}
+          PROGET_NUGET_SOURCE: ${{ vars.PROGET_URL }}
           PROGET_API_KEY: ${{ secrets.PROGET_API_KEY }}
         run: |
           dotnet nuget push "artifacts/*.nupkg" --source "$PROGET_NUGET_SOURCE" --api-key "$PROGET_API_KEY" --skip-duplicate

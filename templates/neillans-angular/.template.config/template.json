@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Neillans",
+  "classifications": ["Web", "Angular", "OIDC", "Docker"],
+  "identity": "Neillans.Templates.Angular",
+  "name": "Neillans Angular Template",
+  "shortName": "neillans-angular",
+  "sourceName": "angular-app",
+  "preferNameDirectory": true
+}

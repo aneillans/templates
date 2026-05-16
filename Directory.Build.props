@@ -10,8 +10,8 @@
     <Deterministic>true</Deterministic>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <Authors>Aneillans</Authors>
-    <Company>Aneillans</Company>
+    <Authors>Neillans</Authors>
+    <Company>Neillans</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>

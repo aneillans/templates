@@ -1,7 +1,7 @@
 services:
   mvc:
     build:
-      context: ../../templates/aneillans-mvc/content
+      context: ../../templates/neillans-mvc/content
       dockerfile: docker/Dockerfile
     ports:
       - "8090:8080"
@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: ../../templates/aneillans-api/content
+      context: ../../templates/neillans-api/content
       dockerfile: docker/Dockerfile
     ports:
       - "8080:8080"
@@ -38,7 +38,7 @@ services:
 
   spa:
     build:
-      context: ../../templates/aneillans-angular/content/angular-app
+      context: ../../templates/neillans-angular/content/angular-app
       dockerfile: docker/Dockerfile
     ports:
       - "4200:80"

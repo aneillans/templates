@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageType>Template</PackageType>
+    <PackageId>Neillans.Templates.Api</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Neillans</Authors>
+    <Description>Neillans API project template with auth, swagger, docker, and tests.</Description>
+    <PackageTags>dotnet-new;template;api;swagger;oidc;keycloak</PackageTags>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="content\**\*" PackagePath="content" />
+    <Content Include=".template.config\**\*" PackagePath=".template.config" />
+  </ItemGroup>
+</Project>

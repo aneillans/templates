@@ -3,26 +3,26 @@
 ## Install template packs locally
 
 ```bash
-dotnet new install ./templates/aneillans-api
-dotnet new install ./templates/aneillans-mvc
-dotnet new install ./templates/aneillans-angular
+dotnet new install ./templates/neillans-api
+dotnet new install ./templates/neillans-mvc
+dotnet new install ./templates/neillans-angular
 ```
 
 ## Generate projects
 
 ```bash
-dotnet new aneillans-api -n MyCompany.Api
-dotnet new aneillans-mvc -n MyCompany.Web
-dotnet new aneillans-angular -n mycompany-spa
+dotnet new neillans-api -n MyCompany.Api
+dotnet new neillans-mvc -n MyCompany.Web
+dotnet new neillans-angular -n mycompany-spa
 ```
 
 ## Update templates in a consumer machine
 
 ```bash
 dotnet new update
-dotnet new install Aneillans.Templates.Api::1.0.0
-dotnet new install Aneillans.Templates.Mvc::1.0.0
-dotnet new install Aneillans.Templates.Angular::1.0.0
+dotnet new install Neillans.Templates.Api::1.0.0
+dotnet new install Neillans.Templates.Mvc::1.0.0
+dotnet new install Neillans.Templates.Angular::1.0.0
 ```
 
 ## Smoke test

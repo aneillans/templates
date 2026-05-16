@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aneillans.TemplateKit.Auth", "src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj", "{6D5A4F05-5D5E-4FB2-AEA7-FA9E29D0FF01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neillans.TemplateKit.Auth", "src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj", "{6D5A4F05-5D5E-4FB2-AEA7-FA9E29D0FF01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aneillans.TemplateKit.Data", "src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj", "{453A1795-2A32-44A9-884B-41D445795AB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neillans.TemplateKit.Data", "src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj", "{453A1795-2A32-44A9-884B-41D445795AB8}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution

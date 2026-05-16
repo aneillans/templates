@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Neillans",
+  "classifications": ["Web", "API", "OIDC", "Docker"],
+  "identity": "Neillans.Templates.Api",
+  "name": "Neillans API Template",
+  "shortName": "neillans-api",
+  "sourceName": "ApiHost",
+  "preferNameDirectory": true,
+  "symbols": {
+    "useSwagger": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Enable Swagger/OpenAPI"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!useSwagger)",
+          "exclude": [
+            "src/ApiHost/Endpoints/SwaggerOnlyEndpoint.cs"
+          ]
+        }
+      ]
+    }
+  ]
+}

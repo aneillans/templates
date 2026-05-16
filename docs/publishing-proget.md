@@ -8,12 +8,12 @@
 ## Manual publish
 
 ```bash
-dotnet pack src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj -c Release -o artifacts
-dotnet pack src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj -c Release -o artifacts
+dotnet pack src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj -c Release -o artifacts
+dotnet pack src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj -c Release -o artifacts
 
-dotnet pack templates/aneillans-api/aneillans-api.TemplatePack.csproj -c Release -o artifacts
-dotnet pack templates/aneillans-mvc/aneillans-mvc.TemplatePack.csproj -c Release -o artifacts
-dotnet pack templates/aneillans-angular/aneillans-angular.TemplatePack.csproj -c Release -o artifacts
+dotnet pack templates/neillans-api/neillans-api.TemplatePack.csproj -c Release -o artifacts
+dotnet pack templates/neillans-mvc/neillans-mvc.TemplatePack.csproj -c Release -o artifacts
+dotnet pack templates/neillans-angular/neillans-angular.TemplatePack.csproj -c Release -o artifacts
 
 dotnet nuget push "artifacts/*.nupkg" --source "$PROGET_NUGET_SOURCE" --api-key "$PROGET_API_KEY" --skip-duplicate
 ```

@@ -1,4 +1,4 @@
-# Aneillans Project Templates
+# Neillans Project Templates
 
 Reusable templates and building blocks for new projects with .NET 10 and Angular.
 
@@ -16,9 +16,9 @@ Reusable templates and building blocks for new projects with .NET 10 and Angular
 ## Repository layout
 
 - `src/building-blocks`: shared NuGet packages for auth and data provider abstractions.
-- `templates/aneillans-api`: `dotnet new` API template.
-- `templates/aneillans-mvc`: `dotnet new` MVC template.
-- `templates/aneillans-angular`: Angular + docker template content.
+- `templates/neillans-api`: `dotnet new` API template.
+- `templates/neillans-mvc`: `dotnet new` MVC template.
+- `templates/neillans-angular`: Angular + docker template content.
 - `docs`: usage and maintenance guidance.
 
 ## Quick start
@@ -28,22 +28,22 @@ ProGet is used for publishing (or as an explicit opt-in source in your environme
 
 ```bash
 dotnet build TemplateKit.sln
-dotnet pack src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj -c Release
-dotnet pack src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj -c Release
+dotnet pack src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj -c Release
+dotnet pack src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj -c Release
 ```
 
 Install template packs locally during development:
 
 ```bash
-dotnet new install ./templates/aneillans-api
-dotnet new install ./templates/aneillans-mvc
+dotnet new install ./templates/neillans-api
+dotnet new install ./templates/neillans-mvc
 ```
 
 Use template:
 
 ```bash
-dotnet new aneillans-api -n Sample.Api
-dotnet new aneillans-mvc -n Sample.Mvc
+dotnet new neillans-api -n Sample.Api
+dotnet new neillans-mvc -n Sample.Mvc
 ```
 
 ## Materio integration

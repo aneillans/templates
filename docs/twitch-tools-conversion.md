@@ -17,8 +17,8 @@ If packages are published:
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Aneillans.TemplateKit.Auth" Version="1.0.0" />
-  <PackageReference Include="Aneillans.TemplateKit.Data" Version="1.0.0" />
+  <PackageReference Include="Neillans.TemplateKit.Auth" Version="1.0.0" />
+  <PackageReference Include="Neillans.TemplateKit.Data" Version="1.0.0" />
 </ItemGroup>
 ```
 
@@ -26,8 +26,8 @@ If consuming locally before publishing:
 
 ```xml
 <ItemGroup>
-  <ProjectReference Include="../../templates/src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj" />
-  <ProjectReference Include="../../templates/src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj" />
+  <ProjectReference Include="../../templates/src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj" />
+  <ProjectReference Include="../../templates/src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj" />
 </ItemGroup>
 ```
 

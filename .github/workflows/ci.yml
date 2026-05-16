@@ -24,20 +24,20 @@ jobs:
 
       - name: Test
         run: |
-          dotnet test tests/Aneillans.TemplateKit.Auth.Tests/Aneillans.TemplateKit.Auth.Tests.csproj -c Release --no-build
-          dotnet test tests/Aneillans.TemplateKit.Data.Tests/Aneillans.TemplateKit.Data.Tests.csproj -c Release --no-build
+          dotnet test tests/Neillans.TemplateKit.Auth.Tests/Neillans.TemplateKit.Auth.Tests.csproj -c Release --no-build
+          dotnet test tests/Neillans.TemplateKit.Data.Tests/Neillans.TemplateKit.Data.Tests.csproj -c Release --no-build
 
       - name: Pack templates
         run: |
-          dotnet pack templates/aneillans-api/aneillans-api.TemplatePack.csproj -c Release -o artifacts
-          dotnet pack templates/aneillans-mvc/aneillans-mvc.TemplatePack.csproj -c Release -o artifacts
-          dotnet pack templates/aneillans-angular/aneillans-angular.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-api/neillans-api.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-mvc/neillans-mvc.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/neillans-angular/neillans-angular.TemplatePack.csproj -c Release -o artifacts
           
   angular-validate:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: templates/aneillans-angular/content/angular-app
+        working-directory: templates/neillans-angular/content/angular-app
     steps:
       - uses: actions/checkout@v4
 
@@ -46,7 +46,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: templates/aneillans-angular/content/angular-app/package.json
+          cache-dependency-path: templates/neillans-angular/content/angular-app/package.json
 
       - name: Install
         run: npm install

@@ -8,14 +8,14 @@
 
 ## Building blocks
 
-- `Aneillans.TemplateKit.Auth`: OIDC/JWT + role-based authorization wiring.
-- `Aneillans.TemplateKit.Data`: provider-agnostic EF Core setup (SQLite default, PostgreSQL/MySQL optional).
+- `Neillans.TemplateKit.Auth`: OIDC/JWT + role-based authorization wiring.
+- `Neillans.TemplateKit.Data`: provider-agnostic EF Core setup (SQLite default, PostgreSQL/MySQL optional).
 
 ## Template packs
 
-- `aneillans-api`: API starter with OpenAPI and JWT.
-- `aneillans-mvc`: MVC starter with OIDC and Materio integration hooks.
-- `aneillans-angular`: SPA starter with OIDC client wiring.
+- `neillans-api`: API starter with OpenAPI and JWT.
+- `neillans-mvc`: MVC starter with OIDC and Materio integration hooks.
+- `neillans-angular`: SPA starter with OIDC client wiring.
 
 ## Pluggable frontend approach
 
