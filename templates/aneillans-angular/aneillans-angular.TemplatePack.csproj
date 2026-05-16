@@ -7,6 +7,7 @@
     <Authors>Aneillans</Authors>
     <Description>Aneillans Angular SPA template with OIDC and Docker.</Description>
     <PackageTags>dotnet-new;template;angular;oidc;keycloak;docker</PackageTags>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="content\**\*" PackagePath="content" />
+    <Content Include="content\**\*" Exclude="content\angular-app\node_modules\**\*" PackagePath="content" />
     <Content Include=".template.config\**\*" PackagePath=".template.config" />
   </ItemGroup>
 </Project>
