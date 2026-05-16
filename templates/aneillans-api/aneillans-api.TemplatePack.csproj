@@ -7,6 +7,8 @@
     <Authors>Aneillans</Authors>
     <Description>Aneillans API project template with auth, swagger, docker, and tests.</Description>
     <PackageTags>dotnet-new;template;api;swagger;oidc;keycloak</PackageTags>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoDefaultExcludes>true</NoDefaultExcludes>

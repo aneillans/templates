@@ -7,6 +7,8 @@
     <Authors>Aneillans</Authors>
     <Description>Aneillans MVC project template with OIDC auth, docker, and Materio hooks.</Description>
     <PackageTags>dotnet-new;template;mvc;oidc;keycloak;materio</PackageTags>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoDefaultExcludes>true</NoDefaultExcludes>
