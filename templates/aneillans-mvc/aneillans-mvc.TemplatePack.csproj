@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageType>Template</PackageType>
+    <PackageId>Aneillans.Templates.Mvc</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Aneillans</Authors>
+    <Description>Aneillans MVC project template with OIDC auth, docker, and Materio hooks.</Description>
+    <PackageTags>dotnet-new;template;mvc;oidc;keycloak;materio</PackageTags>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="content\**\*" PackagePath="content" />
+    <Content Include=".template.config\**\*" PackagePath=".template.config" />
+  </ItemGroup>
+</Project>

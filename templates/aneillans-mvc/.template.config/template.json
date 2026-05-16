@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Aneillans",
+  "classifications": ["Web", "MVC", "OIDC", "Docker"],
+  "identity": "Aneillans.Templates.Mvc",
+  "name": "Aneillans MVC Template",
+  "shortName": "aneillans-mvc",
+  "sourceName": "MvcHost",
+  "preferNameDirectory": true
+}

@@ -1,0 +1,44 @@
+services:
+  mvc:
+    build:
+      context: ../../templates/aneillans-mvc/content
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8090:8080"
+    environment:
+      - Authentication__Oidc__Authority=http://keycloak:8080/realms/template-realm
+      - Authentication__Oidc__ClientId=mvc-host
+      - Authentication__Oidc__ClientSecret=mvc-host-secret
+    depends_on:
+      - keycloak
+
+  api:
+    build:
+      context: ../../templates/aneillans-api/content
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - Database__Provider=Sqlite
+      - ConnectionStrings__Default=Data Source=/app/app.db
+      - Authentication__Jwt__Authority=http://keycloak:8080/realms/template-realm
+      - Authentication__Jwt__Audience=api-host
+      - Authentication__Jwt__RequireHttpsMetadata=false
+    depends_on:
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8081:8080"
+
+  spa:
+    build:
+      context: ../../templates/aneillans-angular/content/angular-app
+      dockerfile: docker/Dockerfile
+    ports:
+      - "4200:80"

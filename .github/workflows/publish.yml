@@ -1,0 +1,36 @@
+name: Publish Packages
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Pack building blocks
+        run: |
+          dotnet pack src/building-blocks/Aneillans.TemplateKit.Auth/Aneillans.TemplateKit.Auth.csproj -c Release -o artifacts
+          dotnet pack src/building-blocks/Aneillans.TemplateKit.Data/Aneillans.TemplateKit.Data.csproj -c Release -o artifacts
+
+      - name: Pack templates
+        run: |
+          dotnet pack templates/aneillans-api/aneillans-api.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/aneillans-mvc/aneillans-mvc.TemplatePack.csproj -c Release -o artifacts
+          dotnet pack templates/aneillans-angular/aneillans-angular.TemplatePack.csproj -c Release -o artifacts
+
+      - name: Push to ProGet
+        env:
+          PROGET_NUGET_SOURCE: ${{ secrets.PROGET_NUGET_SOURCE }}
+          PROGET_API_KEY: ${{ secrets.PROGET_API_KEY }}
+        run: |
+          dotnet nuget push "artifacts/*.nupkg" --source "$PROGET_NUGET_SOURCE" --api-key "$PROGET_API_KEY" --skip-duplicate

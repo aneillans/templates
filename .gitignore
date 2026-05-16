@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/.env
+**/.env.local
+**/.env.*.local
+**.user.ini
+.vs/
+docker-compose.override.yml
+node_modules/
+.vscode/
+dist/
+*.min.js
+*.min.css
