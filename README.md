@@ -38,6 +38,15 @@ Install template packs locally during development:
 ```bash
 dotnet new install ./templates/neillans-api
 dotnet new install ./templates/neillans-mvc
+dotnet new install ./templates/neillans-angular
+```
+
+Install from package feed (consumer machines):
+
+```bash
+dotnet new install Neillans.Templates.Api --nuget-source https://packages.neillans.co.uk/nuget/dotNet/v3/index.json
+dotnet new install Neillans.Templates.Mvc --nuget-source https://packages.neillans.co.uk/nuget/dotNet/v3/index.json
+dotnet new install Neillans.Templates.Angular --nuget-source https://packages.neillans.co.uk/nuget/dotNet/v3/index.json
 ```
 
 Use template:
@@ -53,11 +62,8 @@ See full runnable examples in `examples/README.md`.
 
 This repository does not redistribute Materio assets. Use the script and guidance in `docs/materio-integration.md` to pull and map the free template into a generated MVC app.
 
-## ProGet publishing
+## Packages
 
-Set CI secrets:
+Packages of these templates can be found on the ProGet feed:
 
-- `PROGET_NUGET_SOURCE`
-- `PROGET_API_KEY`
-
-The publish workflow packs and pushes TemplateKit packages and template NuGet packages.
+- https://packages.neillans.co.uk/nuget/dotNet/v3/index.json
