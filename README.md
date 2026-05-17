@@ -19,6 +19,7 @@ Reusable templates and building blocks for new projects with .NET 10 and Angular
 - `templates/neillans-api`: `dotnet new` API template.
 - `templates/neillans-mvc`: `dotnet new` MVC template.
 - `templates/neillans-angular`: Angular + docker template content.
+- `examples`: full generated demos used to validate template output end-to-end.
 - `docs`: usage and maintenance guidance.
 
 ## Quick start
@@ -45,6 +46,8 @@ Use template:
 dotnet new neillans-api -n Sample.Api
 dotnet new neillans-mvc -n Sample.Mvc
 ```
+
+See full runnable examples in `examples/README.md`.
 
 ## Materio integration
 

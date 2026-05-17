@@ -116,8 +116,13 @@ Choose one strategy:
 Update GitHub workflows to follow TemplateKit structure:
 
 - Build + test in CI
-- Optional template smoke tests for generated outputs
+- Validate full generated outputs (API, MVC, Angular) in CI, not just source templates
 - Package/publish workflow that pushes to ProGet only on release/tag/manual publish
+
+Reference points in this repo:
+
+- `.github/workflows/ci.yml` includes `examples-validate` to run end-to-end checks for generated demos.
+- `examples/README.md` documents run/build/test commands for `api-demo`, `mvc-demo`, and `angular-demo` outputs.
 
 ## 9) Suggested migration order
 
@@ -132,6 +137,8 @@ Update GitHub workflows to follow TemplateKit structure:
 
 - `dotnet restore` succeeds.
 - `dotnet build -c Release` succeeds.
+- Generated API and MVC outputs restore/build/test successfully.
+- Generated Angular output installs/builds/tests successfully.
 - Auth challenge/redirect works with Keycloak.
 - Admin authorization policy still behaves as expected.
 - EF migrations apply and app starts against PostgreSQL.

@@ -1,0 +1,36 @@
+{
+  "name": "demo-angular",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ng serve --host 0.0.0.0 --port 4200",
+    "build": "ng build",
+    "test": "ng test --watch=false",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@angular/animations": "^21.2.13",
+    "@angular/common": "^21.2.13",
+    "@angular/compiler": "^21.2.13",
+    "@angular/core": "^21.2.13",
+    "@angular/forms": "^21.2.13",
+    "@angular/platform-browser": "^21.2.13",
+    "@angular/platform-browser-dynamic": "^21.2.13",
+    "@angular/router": "^21.2.13",
+    "angular-auth-oidc-client": "^18.0.0",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.7.0",
+    "zone.js": "^0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.11",
+    "@angular/cli": "^21.2.11",
+    "@angular/compiler-cli": "^21.2.13",
+    "jsdom": "29.1.1",
+    "typescript": "^5.8.2",
+    "vitest": "^4.1.6"
+  },
+  "overrides": {
+    "qs": "6.15.2"
+  }
+}

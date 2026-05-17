@@ -30,3 +30,13 @@ dotnet new install Neillans.Templates.Angular::1.0.0
 ```bash
 ./scripts/verify-templates.sh
 ```
+
+## Full demo examples
+
+This repo also includes full generated examples that can be run directly:
+
+- `examples/api-demo/content`
+- `examples/mvc-demo/content`
+- `examples/angular-demo/content/demo-angular`
+
+See `examples/README.md` for run and validation commands.

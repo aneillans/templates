@@ -1,0 +1,23 @@
+services:
+  mvc:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8090:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Authentication__Oidc__Authority=http://keycloak:8080/realms/template-realm
+      - Authentication__Oidc__ClientId=mvc-host
+      - Authentication__Oidc__ClientSecret=mvc-host-secret
+    depends_on:
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev
+    ports:
+      - "8082:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
