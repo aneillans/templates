@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>Neillans.Templates.Mvc</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Neillans</Authors>
     <Description>Neillans MVC project template with OIDC auth, docker, and Materio hooks.</Description>
     <PackageTags>dotnet-new;template;mvc;oidc;keycloak;materio</PackageTags>
