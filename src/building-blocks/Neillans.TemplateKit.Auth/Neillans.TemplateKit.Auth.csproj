@@ -2,6 +2,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Neillans.TemplateKit.Auth</PackageId>
+    <Version>1.0.1</Version>
     <Description>Authentication building blocks for OIDC, JWT, and role-based authorization.</Description>
   </PropertyGroup>
 
