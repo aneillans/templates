@@ -6,7 +6,6 @@ namespace Neillans.TemplateKit.Data;
 
 public enum DatabaseProvider
 {
-    Sqlite,
     PostgreSql,
     MySql
 }
@@ -22,11 +21,12 @@ public static class DataServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        var provider = DatabaseProvider.Sqlite;
-        if (Enum.TryParse<DatabaseProvider>(configuration["Database:Provider"], ignoreCase: true, out var parsedProvider))
-        {
-            provider = parsedProvider;
-        }
+        var providerValue = configuration["Database:Provider"];
+        var provider = providerValue is null
+            ? DatabaseProvider.PostgreSql
+            : Enum.TryParse<DatabaseProvider>(providerValue, ignoreCase: true, out var parsedProvider)
+                ? parsedProvider
+                : throw new InvalidOperationException($"Unsupported database provider '{providerValue}'. Supported providers: PostgreSql, MySql.");
 
         var connectionString = configuration.GetConnectionString("Default")
             ?? throw new InvalidOperationException("Connection string 'Default' was not found.");
@@ -42,8 +42,7 @@ public static class DataServiceCollectionExtensions
                     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
                     break;
                 default:
-                    options.UseSqlite(connectionString);
-                    break;
+                    throw new InvalidOperationException($"Unsupported database provider '{provider}'. Supported providers: PostgreSql, MySql.");
             }
 
             configure?.Invoke(options);

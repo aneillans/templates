@@ -4,7 +4,7 @@
 
 - JWT auth with role policies and Keycloak defaults.
 - OpenAPI/Swagger docs in development.
-- SQLite default with PostgreSQL/MySQL options.
+- PostgreSQL default with MySQL option.
 - Docker + compose stack including Keycloak.
 - Starter xUnit tests.
 

@@ -17,7 +17,7 @@ builder.Services.AddAuthorizationBuilder()
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var provider = builder.Configuration["Database:Provider"]?.ToLowerInvariant() ?? "sqlite";
+    var provider = builder.Configuration["Database:Provider"]?.ToLowerInvariant() ?? "postgresql";
     var connectionString = builder.Configuration.GetConnectionString("Default")
         ?? throw new InvalidOperationException("Missing connection string 'Default'.");
 
@@ -31,8 +31,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             break;
         default:
-            options.UseSqlite(connectionString);
-            break;
+            throw new InvalidOperationException($"Unsupported database provider '{provider}'. Supported providers: PostgreSql, MySql.");
     }
 });
 
