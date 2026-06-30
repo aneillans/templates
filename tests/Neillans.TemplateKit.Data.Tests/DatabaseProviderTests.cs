@@ -7,9 +7,9 @@ namespace Neillans.TemplateKit.Data.Tests;
 public sealed class DatabaseProviderTests
 {
     [Fact]
-    public void SqliteShouldBeDefaultEnumValue()
+    public void PostgreSqlShouldBeDefaultEnumValue()
     {
         var value = default(DatabaseProvider);
-        value.Should().Be(DatabaseProvider.Sqlite);
+        value.Should().Be(DatabaseProvider.PostgreSql);
     }
 }

@@ -9,7 +9,7 @@
 ## Building blocks
 
 - `Neillans.TemplateKit.Auth`: OIDC/JWT + role-based authorization wiring.
-- `Neillans.TemplateKit.Data`: provider-agnostic EF Core setup (SQLite default, PostgreSQL/MySQL optional).
+- `Neillans.TemplateKit.Data`: provider-agnostic EF Core setup (PostgreSQL default, MySQL optional).
 
 ## Template packs
 
@@ -25,6 +25,6 @@
 
 ## Database strategy
 
-- Default provider is SQLite for local and low-friction scenarios.
-- PostgreSQL and MySQL are first-class options through configuration.
+- Default provider is PostgreSQL.
+- MySQL remains available through configuration.
 - Template code avoids hard dependency on a single relational engine.

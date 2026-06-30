@@ -8,7 +8,7 @@ Reusable templates and building blocks for new projects with .NET 10 and Angular
 - Angular SPA template for apps that need a full client-side experience.
 - API template with OpenAPI/Swagger, auth, and health checks.
 - OIDC/JWT + role support with Keycloak-ready configuration.
-- SQLite-by-default data setup with PostgreSQL/MySQL options.
+- PostgreSQL-by-default data setup with MySQL option.
 - Dockerfiles and compose test stacks.
 - Unit tests and template smoke-test workflow.
 - Packaging and publishing setup for ProGet.
