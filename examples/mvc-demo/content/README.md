@@ -3,7 +3,8 @@
 ## Features
 
 - MVC-first architecture with OIDC auth and role policy support.
-- Keycloak-compatible defaults.
+- Keycloak-compatible defaults: role checks read the flat `roles` claim, and `Authentication:Oidc:RequireHttpsMetadata` is `false` only in `appsettings.Development.json`.
+- Access-denied and error pages.
 - Materio integration hook and import script.
 - Docker + compose stack.
 - Starter xUnit tests.
@@ -15,6 +16,15 @@ dotnet restore DemoMvc.sln
 dotnet test DemoMvc.sln
 dotnet run --project src/DemoMvc/DemoMvc.csproj
 ```
+
+## Docker
+
+```bash
+cd docker
+docker compose up --build
+```
+
+The app runs on http://localhost:8090 and Keycloak on http://localhost:8082. Keycloak imports `docker/keycloak/template-realm-realm.json` on first start. Sign in as `demo-admin` / `demo-admin` (admin role) or `demo-user` / `demo-user`. The admin console login is `admin` / `admin`. These credentials are for local development only.
 
 ## Materio
 

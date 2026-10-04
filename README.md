@@ -27,8 +27,11 @@ Reusable templates and building blocks for new projects with .NET 10 and Angular
 Local restore is configured to use `nuget.org` only.
 ProGet is used for publishing (or as an explicit opt-in source in your environment).
 
+`TemplateKit.sln` contains the building-block packages and their tests. Template packs are packed separately.
+
 ```bash
 dotnet build TemplateKit.sln
+dotnet test TemplateKit.sln
 dotnet pack src/building-blocks/Neillans.TemplateKit.Auth/Neillans.TemplateKit.Auth.csproj -c Release
 dotnet pack src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.Data.csproj -c Release
 ```
@@ -36,9 +39,9 @@ dotnet pack src/building-blocks/Neillans.TemplateKit.Data/Neillans.TemplateKit.D
 Install template packs locally during development:
 
 ```bash
-dotnet new install ./templates/neillans-api
-dotnet new install ./templates/neillans-mvc
-dotnet new install ./templates/neillans-angular
+dotnet new install ./templates/neillans-api/content
+dotnet new install ./templates/neillans-mvc/content
+dotnet new install ./templates/neillans-angular/content
 ```
 
 Install from package feed (consumer machines):

@@ -9,12 +9,14 @@ builder.Services
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
     })
-    .AddCookie()
+    .AddCookie(options => options.AccessDeniedPath = "/Home/AccessDenied")
     .AddOpenIdConnect(options =>
     {
         options.Authority = builder.Configuration["Authentication:Oidc:Authority"];
         options.ClientId = builder.Configuration["Authentication:Oidc:ClientId"];
         options.ClientSecret = builder.Configuration["Authentication:Oidc:ClientSecret"];
+        // Only disable for local HTTP identity providers (see appsettings.Development.json).
+        options.RequireHttpsMetadata = builder.Configuration.GetValue("Authentication:Oidc:RequireHttpsMetadata", true);
         options.ResponseType = "code";
         options.UsePkce = true;
         options.SaveTokens = true;
@@ -22,6 +24,9 @@ builder.Services
         options.Scope.Add("openid");
         options.Scope.Add("profile");
         options.Scope.Add("roles");
+        // Keep claim names as issued so the flat "roles" claim from Keycloak drives RequireRole.
+        options.MapInboundClaims = false;
+        options.TokenValidationParameters.NameClaimType = "preferred_username";
         options.TokenValidationParameters.RoleClaimType = "roles";
     });
 

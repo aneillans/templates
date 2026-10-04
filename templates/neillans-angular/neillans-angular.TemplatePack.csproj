@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>Neillans.Templates.Angular</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Neillans</Authors>
     <Description>Neillans Angular SPA template with OIDC and Docker.</Description>
     <PackageTags>dotnet-new;template;angular;oidc;keycloak;docker</PackageTags>
@@ -15,7 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="content\**\*" Exclude="content\angular-app\node_modules\**\*" PackagePath="content" />
-    <Content Include=".template.config\**\*" PackagePath=".template.config" />
+    <Content Include="content\**\*" Exclude="content\**\bin\**;content\**\obj\**;content\**\node_modules\**;content\**\.angular\**;content\**\dist\**" PackagePath="content" />
   </ItemGroup>
 </Project>
