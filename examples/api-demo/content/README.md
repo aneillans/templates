@@ -4,7 +4,7 @@
 
 - JWT auth with role policies and Keycloak defaults.
 - OpenAPI/Swagger docs in development.
-- PostgreSQL default with MySQL option.
+- PostgreSQL default with MySQL option (Oracle `MySql.EntityFrameworkCore` provider). Set `Database:Provider` to `MySql` to switch.
 - Docker + compose stack including Keycloak.
 - Starter xUnit tests.
 
