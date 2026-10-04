@@ -28,7 +28,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(connectionString);
             break;
         case "mysql":
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            options.UseMySQL(connectionString);
             break;
         default:
             throw new InvalidOperationException($"Unsupported database provider '{provider}'. Supported providers: PostgreSql, MySql.");

@@ -39,7 +39,7 @@ public static class DataServiceCollectionExtensions
                     options.UseNpgsql(connectionString);
                     break;
                 case DatabaseProvider.MySql:
-                    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                    options.UseMySQL(connectionString);
                     break;
                 default:
                     throw new InvalidOperationException($"Unsupported database provider '{provider}'. Supported providers: PostgreSql, MySql.");
