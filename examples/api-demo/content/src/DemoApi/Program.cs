@@ -35,8 +35,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     }
 });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Built-in OpenAPI document generation (also registers the endpoint API explorer).
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -46,8 +46,9 @@ app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // Serves the document at /openapi/v1.json; Swagger UI at /swagger renders it.
+    app.MapOpenApi();
+    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "v1"));
 }
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }))

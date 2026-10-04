@@ -17,8 +17,8 @@ If packages are published:
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Neillans.TemplateKit.Auth" Version="1.0.0" />
-  <PackageReference Include="Neillans.TemplateKit.Data" Version="1.0.0" />
+  <PackageReference Include="Neillans.TemplateKit.Auth" Version="1.1.0" />
+  <PackageReference Include="Neillans.TemplateKit.Data" Version="1.1.0" />
 </ItemGroup>
 ```
 

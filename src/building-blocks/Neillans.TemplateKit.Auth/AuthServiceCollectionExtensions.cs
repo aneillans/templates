@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -18,6 +17,11 @@ public static class AuthServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(configuration);
 
         var section = configuration.GetSection("Authentication:Oidc");
+        var requireHttpsMetadata = true;
+        if (bool.TryParse(section["RequireHttpsMetadata"], out var parsedRequireHttpsMetadata))
+        {
+            requireHttpsMetadata = parsedRequireHttpsMetadata;
+        }
 
         services
             .AddAuthentication(options =>
@@ -31,6 +35,7 @@ public static class AuthServiceCollectionExtensions
                 options.Authority = section["Authority"];
                 options.ClientId = section["ClientId"];
                 options.ClientSecret = section["ClientSecret"];
+                options.RequireHttpsMetadata = requireHttpsMetadata;
                 options.ResponseType = "code";
                 options.UsePkce = true;
                 options.SaveTokens = true;
@@ -39,8 +44,10 @@ public static class AuthServiceCollectionExtensions
                 options.Scope.Add("profile");
                 options.Scope.Add("roles");
 
+                // Keep claim names as issued so the flat "roles" claim (Keycloak realm-role mapper) drives RequireRole.
+                options.MapInboundClaims = false;
+                options.TokenValidationParameters.NameClaimType = "preferred_username";
                 options.TokenValidationParameters.RoleClaimType = "roles";
-                options.ClaimActions.MapUniqueJsonKey(ClaimTypes.Role, "roles");
 
                 configureOidc?.Invoke(options);
             });

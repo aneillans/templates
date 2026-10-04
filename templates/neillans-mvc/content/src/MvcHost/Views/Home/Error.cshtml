@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container py-4">
+    <h2>Something went wrong</h2>
+    <p>An error occurred while processing your request.</p>
+    @if (ViewData["RequestId"] is string requestId)
+    {
+        <p class="text-muted">Request ID: <code>@requestId</code></p>
+    }
+</div>

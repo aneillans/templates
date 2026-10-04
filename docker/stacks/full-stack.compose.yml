@@ -9,6 +9,7 @@ services:
       - Authentication__Oidc__Authority=http://keycloak:8080/realms/template-realm
       - Authentication__Oidc__ClientId=mvc-host
       - Authentication__Oidc__ClientSecret=mvc-host-secret
+      - Authentication__Oidc__RequireHttpsMetadata=false
     depends_on:
       - keycloak
 
@@ -39,10 +40,16 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.8
-    command: start-dev
+    # Imports ./keycloak/template-realm-realm.json (clients, roles, demo users) on first start.
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
     environment:
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
       - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      # Tokens are issued for the browser-facing URL; containers still reach keycloak:8080.
+      - KC_HOSTNAME=http://localhost:8081
+      - KC_HOSTNAME_BACKCHANNEL_DYNAMIC=true
     ports:
       - "8081:8080"
 

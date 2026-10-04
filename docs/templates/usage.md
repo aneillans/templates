@@ -2,10 +2,12 @@
 
 ## Install template packs locally
 
+Each template's `.template.config` lives inside its `content/` folder, so install that folder (or the packed `.nupkg`).
+
 ```bash
-dotnet new install ./templates/neillans-api
-dotnet new install ./templates/neillans-mvc
-dotnet new install ./templates/neillans-angular
+dotnet new install ./templates/neillans-api/content
+dotnet new install ./templates/neillans-mvc/content
+dotnet new install ./templates/neillans-angular/content
 ```
 
 ## Generate projects
@@ -20,9 +22,9 @@ dotnet new neillans-angular -n mycompany-spa
 
 ```bash
 dotnet new update
-dotnet new install Neillans.Templates.Api::1.0.0
-dotnet new install Neillans.Templates.Mvc::1.0.0
-dotnet new install Neillans.Templates.Angular::1.0.0
+dotnet new install Neillans.Templates.Api::1.1.0
+dotnet new install Neillans.Templates.Mvc::1.1.0
+dotnet new install Neillans.Templates.Angular::1.1.0
 ```
 
 ## Smoke test
@@ -30,6 +32,8 @@ dotnet new install Neillans.Templates.Angular::1.0.0
 ```bash
 ./scripts/verify-templates.sh
 ```
+
+The script packs every template, installs the packages into an isolated template hive, generates each template (including `neillans-api --useSwagger false`) outside the repo, checks no packaging files leak into the output, then builds and tests it. CI runs it in the `template-smoke` job.
 
 ## Full demo examples
 

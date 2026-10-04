@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Neillans.TemplateKit.Data</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Description>Database provider abstraction with PostgreSQL default and MySQL support.</Description>
   </PropertyGroup>
 
