@@ -2,7 +2,9 @@
 
 ## Features
 
-- Angular latest baseline (standalone components).
+- Angular 22 with standalone components, zoneless change detection, and OnPush by default.
+- Requires Node `^22.22.3 || ^24.15.0 || >=26.0.0` (Docker build uses Node 24 LTS).
+- Unit tests run on Vitest via `@angular/build:unit-test`.
 - OIDC support via `angular-auth-oidc-client`.
 - Role extraction utility and unit tests.
 - Docker image for production static hosting with nginx.
