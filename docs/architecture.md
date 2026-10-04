@@ -29,3 +29,10 @@
 - MySQL is available by setting `Database:Provider` to `MySql`. It uses Oracle's `MySql.EntityFrameworkCore` provider, which tracks EF Core releases. Pomelo was dropped because it has no EF Core 10 release.
 - All EF Core packages stay on the same major version as the target framework.
 - Template code avoids hard dependency on a single relational engine.
+
+## Container stacks
+
+- Compose files use `postgres:18` and `quay.io/keycloak/keycloak:26.8` (`start-dev`).
+- Keycloak's admin user comes from `KC_BOOTSTRAP_ADMIN_USERNAME` / `KC_BOOTSTRAP_ADMIN_PASSWORD`. The older `KEYCLOAK_ADMIN*` variables are deprecated.
+- Postgres 18 stores data under `/var/lib/postgresql/18/docker`. If you add a volume, mount it at `/var/lib/postgresql`, not `/var/lib/postgresql/data`.
+- The stacks do not import a realm. Create `template-realm` and its clients (`api-host`, `mvc-host`, `angular-spa`) in the Keycloak admin console before testing sign-in.
