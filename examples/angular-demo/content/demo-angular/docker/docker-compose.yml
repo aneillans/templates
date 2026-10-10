@@ -1,7 +1,30 @@
+# Local stack: Keycloak with the template realm, plus the SPA image.
+# Auth model: oidc. The SPA signs in against Keycloak itself. Open http://localhost:4200.
+#
+# Sign in as demo-admin / demo-admin or demo-user / demo-user.
+# To proxy /api/ to an API, set API_UPSTREAM on the spa service (e.g. http://api:8080).
 services:
   spa:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    environment:
+      - OIDC_AUTHORITY=http://localhost:8081/realms/template-realm
+      - OIDC_CLIENT_ID=angular-spa
     ports:
-      - "4200:80"
+      - '4200:80'
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8
+    # Imports ./keycloak/template-realm-realm.json (clients, roles, demo users) on first start.
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      # Tokens are issued for the browser-facing URL; containers still reach keycloak:8080.
+      - KC_HOSTNAME=http://localhost:8081
+      - KC_HOSTNAME_BACKCHANNEL_DYNAMIC=true
+    ports:
+      - '8081:8080'

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4c6aeae-bc72-4ef1-a4de-f6d9e588ab75" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/stacks/full-stack.compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/stacks/full-stack.compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/stacks/keycloak/template-realm-realm.json" beforeDir="false" afterPath="$PROJECT_DIR$/docker/stacks/keycloak/template-realm-realm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/architecture.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/templates/usage.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/templates/usage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/examples/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/core/role-utils.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/core/role-utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/features/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/features/admin/admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/features/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/app/features/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/angular-demo/content/demo-angular/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/api-demo/content/docker/keycloak/template-realm-realm.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/api-demo/content/docker/keycloak/template-realm-realm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/mvc-demo/content/docker/keycloak/template-realm-realm.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/mvc-demo/content/docker/keycloak/template-realm-realm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/verify-templates.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/verify-templates.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/.template.config/template.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/.template.config/template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/core/role-utils.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/core/role-utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/features/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/features/admin/admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/features/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/app/features/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/content/angular-app/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-angular/neillans-angular.TemplatePack.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-angular/neillans-angular.TemplatePack.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-api/content/docker/keycloak/template-realm-realm.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-api/content/docker/keycloak/template-realm-realm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/neillans-mvc/content/docker/keycloak/template-realm-realm.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/neillans-mvc/content/docker/keycloak/template-realm-realm.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "aneillans"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/aneillans/templates.git",
+    "accountId": "4abeae5f-8635-446b-9a0c-57e488fcc127"
+  }
+}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0228763389991504" />
+      <entry key="MS500" value="1.469761374607006" />
+      <entry key="S2" value="1.8278842050497657" />
+      <entry key="S5" value="1.9331303528306893" />
+      <entry key="S10" value="2.095941329566185" />
+      <entry key="S30" value="3.049248531676949" />
+      <entry key="S60" value="3.7784508741046507" />
+      <entry key="M2" value="4.310764253380441" />
+      <entry key="M5" value="4.702768423240062" />
+      <entry key="M10" value="4.84754187581299" />
+      <entry key="M15" value="4.8974876049110065" />
+      <entry key="M30" value="4.948301923593275" />
+      <entry key="H1" value="4.974039533778321" />
+      <entry key="H2" value="4.9869917891874085" />
+      <entry key="H4" value="4.993488885023918" />
+      <entry key="D1" value="4.998913839331226" />
+      <entry key="W1" value="4.999844810299742" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9529480013386707" />
+      <entry key="MS500" value="1.4431484296080594" />
+      <entry key="S2" value="1.818705834512424" />
+      <entry key="S5" value="1.9290633956389265" />
+      <entry key="S10" value="2.0925895385701705" />
+      <entry key="S30" value="3.044971383512291" />
+      <entry key="S60" value="3.775074930320019" />
+      <entry key="M2" value="4.308622131944146" />
+      <entry key="M5" value="4.701777434968747" />
+      <entry key="M10" value="4.84702157981472" />
+      <entry key="M15" value="4.897135034190205" />
+      <entry key="M30" value="4.948122734635745" />
+      <entry key="H1" value="4.973949203843023" />
+      <entry key="H2" value="4.986946439148751" />
+      <entry key="H4" value="4.9934661635852065" />
+      <entry key="D1" value="4.998910045964731" />
+      <entry key="W1" value="4.99984426823187" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3KVSsbw28dRuGtkMV9u5mcY3fFd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feat/angular-auth-models",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4c6aeae-bc72-4ef1-a4de-f6d9e588ab75" name="Changes" comment="" />
+      <created>1791641452264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791641452264</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -59,3 +59,12 @@ services:
       dockerfile: docker/Dockerfile
     ports:
       - "4200:80"
+    environment:
+      # Built from the raw template content, which is the default --auth oidc model.
+      - OIDC_AUTHORITY=http://localhost:8081/realms/template-realm
+      - OIDC_CLIENT_ID=angular-spa
+      # Same-origin /api/ proxied to the API, so no CORS is needed.
+      - API_UPSTREAM=http://api:8080
+    depends_on:
+      - api
+      - keycloak

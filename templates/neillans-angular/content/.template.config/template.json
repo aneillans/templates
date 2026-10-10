@@ -1,10 +1,102 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Neillans",
-  "classifications": ["Web", "Angular", "OIDC", "Docker"],
+  "classifications": [
+    "Web",
+    "Angular",
+    "OIDC",
+    "Docker"
+  ],
   "identity": "Neillans.Templates.Angular",
   "name": "Neillans Angular Template",
   "shortName": "neillans-angular",
   "sourceName": "angular-app",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "symbols": {
+    "auth": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "oidc",
+      "description": "Where authentication happens.",
+      "choices": [
+        {
+          "choice": "oidc",
+          "description": "In the SPA: authorisation code + PKCE via angular-auth-oidc-client; the browser holds the tokens."
+        },
+        {
+          "choice": "proxy",
+          "description": "Offloaded to an edge proxy (oauth2-proxy): the browser holds only a session cookie."
+        }
+      ]
+    },
+    "title": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Display name for the brand, page titles and footer. Defaults to the project name in title case."
+    },
+    "nameTitle": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "toTitle"
+    },
+    "appTitle": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "title",
+        "fallbackVariableName": "nameTitle"
+      },
+      "replaces": "Angular App"
+    },
+    "AuthOidc": {
+      "type": "computed",
+      "value": "(auth == \"oidc\")"
+    },
+    "AuthProxy": {
+      "type": "computed",
+      "value": "(auth == \"proxy\")"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(AuthOidc)",
+          "exclude": [
+            "angular-app/src/app/core/auth/proxy-auth.service.ts",
+            "angular-app/src/app/core/auth/proxy-auth.service.spec.ts",
+            "angular-app/src/app/core/auth/auth.providers.proxy.ts",
+            "angular-app/proxy.conf.proxy.json"
+          ]
+        },
+        {
+          "condition": "(AuthProxy)",
+          "exclude": [
+            "angular-app/src/app/core/auth/oidc-auth.service.ts",
+            "angular-app/src/app/core/auth/oidc-auth.service.spec.ts",
+            "angular-app/src/app/core/auth/auth.providers.ts",
+            "angular-app/proxy.conf.json"
+          ],
+          "rename": {
+            "angular-app/src/app/core/auth/auth.providers.proxy.ts": "angular-app/src/app/core/auth/auth.providers.ts",
+            "angular-app/proxy.conf.proxy.json": "angular-app/proxy.conf.json"
+          }
+        }
+      ]
+    }
+  ],
+  "forms": {
+    "separatorsToSpaces": {
+      "identifier": "replace",
+      "pattern": "[-_.]+",
+      "replacement": " "
+    },
+    "toTitle": {
+      "identifier": "chain",
+      "steps": [
+        "separatorsToSpaces",
+        "titleCase"
+      ]
+    }
+  }
 }

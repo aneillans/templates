@@ -1,0 +1,74 @@
+# Local stack: Keycloak with the template realm, plus the SPA image.
+# Auth model: proxy. oauth2-proxy is the only public entry point and owns the session; the SPA
+# container sits behind it. Open http://localhost:4180.
+#
+# Sign in as demo-admin / demo-admin or demo-user / demo-user.
+# To proxy /api/ to an API, set API_UPSTREAM on the spa service (e.g. http://api:8080).
+services:
+  spa:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      # Sign-out returns to the app root; oauth2-proxy ends the Keycloak session server-side
+      # (OAUTH2_PROXY_BACKEND_LOGOUT_URL), so there is no logout confirmation page.
+      - AUTH_PROXY_SIGN_OUT_REDIRECT=
+
+  oauth2-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.15.4
+    ports:
+      - '4180:4180'
+    environment:
+      - OAUTH2_PROXY_HTTP_ADDRESS=0.0.0.0:4180
+      - OAUTH2_PROXY_UPSTREAMS=http://spa:80/
+      - OAUTH2_PROXY_PROVIDER=oidc
+      - OAUTH2_PROXY_CLIENT_ID=oauth2-proxy
+      - OAUTH2_PROXY_CLIENT_SECRET=oauth2-proxy-secret
+      - OAUTH2_PROXY_CODE_CHALLENGE_METHOD=S256
+      - OAUTH2_PROXY_SCOPE=openid profile email roles
+      # Keycloak issues tokens for the browser-facing URL but containers reach it as keycloak:8080,
+      # so discovery is skipped and the endpoints are listed explicitly.
+      - OAUTH2_PROXY_OIDC_ISSUER_URL=http://localhost:8081/realms/template-realm
+      - OAUTH2_PROXY_SKIP_OIDC_DISCOVERY=true
+      - OAUTH2_PROXY_LOGIN_URL=http://localhost:8081/realms/template-realm/protocol/openid-connect/auth
+      - OAUTH2_PROXY_REDEEM_URL=http://keycloak:8080/realms/template-realm/protocol/openid-connect/token
+      - OAUTH2_PROXY_OIDC_JWKS_URL=http://keycloak:8080/realms/template-realm/protocol/openid-connect/certs
+      - OAUTH2_PROXY_PROFILE_URL=http://keycloak:8080/realms/template-realm/protocol/openid-connect/userinfo
+      - OAUTH2_PROXY_REDIRECT_URL=http://localhost:4180/oauth2/callback
+      # Realm roles (flat "roles" claim) become the userinfo "groups" the SPA reads as roles.
+      - OAUTH2_PROXY_OIDC_GROUPS_CLAIM=roles
+      - OAUTH2_PROXY_EMAIL_DOMAINS=*
+      # The upstream nginx turns this header into the API's bearer token.
+      - OAUTH2_PROXY_PASS_ACCESS_TOKEN=true
+      # XHR to /api gets a 401 instead of a login redirect; the SPA then re-authenticates.
+      - OAUTH2_PROXY_API_ROUTES=^/api/
+      - OAUTH2_PROXY_SKIP_AUTH_ROUTES=GET=^/healthz$$
+      - OAUTH2_PROXY_SKIP_PROVIDER_BUTTON=true
+      # Absolute return targets the proxy accepts: itself and ng serve.
+      - OAUTH2_PROXY_WHITELIST_DOMAINS=localhost:4180,localhost:4200
+      # On sign-out, end the Keycloak session too. {id_token} is filled in by oauth2-proxy.
+      - OAUTH2_PROXY_BACKEND_LOGOUT_URL=http://keycloak:8080/realms/template-realm/protocol/openid-connect/logout?id_token_hint={id_token}
+      # Refresh before Keycloak's 5-minute access token expires.
+      - OAUTH2_PROXY_COOKIE_REFRESH=4m
+      # Local development only: plain HTTP and a fixed secret. Generate a real one with
+      # `openssl rand -base64 32 | tr -- '+/' '-_'`.
+      - OAUTH2_PROXY_COOKIE_SECURE=false
+      - OAUTH2_PROXY_COOKIE_SECRET=local-dev-only-cookie-secret-32b
+    depends_on:
+      - keycloak
+      - spa
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8
+    # Imports ./keycloak/template-realm-realm.json (clients, roles, demo users) on first start.
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      # Tokens are issued for the browser-facing URL; containers still reach keycloak:8080.
+      - KC_HOSTNAME=http://localhost:8081
+      - KC_HOSTNAME_BACKCHANNEL_DYNAMIC=true
+    ports:
+      - '8081:8080'

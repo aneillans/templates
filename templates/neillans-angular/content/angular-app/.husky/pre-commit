@@ -1,0 +1,2 @@
+# Hooks run from the git root; lint-staged must run from the app directory.
+cd "$(dirname "$0")/.." && npx lint-staged
