@@ -36,6 +36,8 @@ Styles are Bootstrap 5.3 compiled from SCSS. `src/styles.scss` loads Bootstrap w
 
 Signed-in routes render inside `MainLayoutComponent`. Its sidebar comes from `src/app/layout/navigation.ts`, and items with `roles` are hidden from other users. `ThemeService` sets `data-bs-theme` on `<html>`, and an inline script in `index.html` applies the stored choice before first paint. `ToastService` and `ConfirmService` hold their state in signals and are rendered once in `AppComponent`.
 
+UI text comes from `public/i18n/<language>.json` through Transloco's HTTP loader. Translations are not compiled into the bundle, so one image serves every language. An app initializer in `I18nService` picks the language (stored choice, then the deployment default), loads its translations and lazy-loads Angular's locale data before the first route renders. `LOCALE_ID` comes from a factory that Angular reads after the initializers, so dates and numbers follow the language. Changing language stores the choice and reloads the page. API requests carry `Accept-Language`. `npm run lint` includes `scripts/check-i18n-keys.mjs`, which compares the keys used in `src/` with every language file.
+
 ## Pluggable frontend approach
 
 - Vendor template assets are not modified directly.

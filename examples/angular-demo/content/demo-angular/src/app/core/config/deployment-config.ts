@@ -9,6 +9,13 @@
 export interface DeploymentConfig {
   /** Prefix for API calls. Same-origin (`/api`) by default so no CORS is needed. */
   apiBaseUrl: string;
+  /** Language used until the user picks one. Must be one of `languages`. */
+  defaultLanguage: string;
+  /**
+   * Comma-separated language ids offered in this deployment, e.g. `en-GB,cy`. Empty offers every
+   * language the app ships (see src/app/core/i18n/languages.ts).
+   */
+  languages: string;
   /** OIDC issuer the SPA signs in against. */
   oidcAuthority: string;
   /** Public (PKCE) client registered for the SPA. */
@@ -19,6 +26,8 @@ export interface DeploymentConfig {
 /** Defaults match the local Keycloak stack in docker/docker-compose.yml. */
 export const DEFAULT_DEPLOYMENT_CONFIG: DeploymentConfig = {
   apiBaseUrl: '/api',
+  defaultLanguage: 'en-GB',
+  languages: '',
   oidcAuthority: 'http://localhost:8081/realms/template-realm',
   oidcClientId: 'angular-spa',
   oidcScope: 'openid profile email roles',

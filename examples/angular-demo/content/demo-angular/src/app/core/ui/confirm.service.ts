@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
+/** Callers pass translated text; the buttons default to translated Confirm and Cancel. */
 export interface ConfirmOptions {
   title: string;
   message: string;

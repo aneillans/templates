@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { adminGuard, authGuard } from './core/auth/auth.guards';
+import { marker } from './core/i18n/languages';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -13,13 +14,13 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        title: 'Dashboard',
+        title: marker('dashboard.title'),
         loadComponent: () =>
           import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
       },
       {
         path: 'admin',
-        title: 'Admin',
+        title: marker('admin.title'),
         canActivate: [adminGuard],
         loadComponent: () =>
           import('./features/admin/admin.component').then((m) => m.AdminComponent),

@@ -1,0 +1,65 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "administration": "Administration",
+    "admin": "Admin"
+  },
+  "layout": {
+    "mainMenu": "Main menu",
+    "closeMenu": "Close menu",
+    "toggleMenu": "Toggle menu",
+    "accountMenu": "Account menu",
+    "signOut": "Sign out",
+    "language": "Language: {{ language }}",
+    "languageMenu": "Language",
+    "theme": {
+      "menu": "Colour theme",
+      "current": "Colour theme: {{ theme }}",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "signedInAs": "Signed in as {{ name }}",
+    "session": {
+      "title": "Your session",
+      "name": "Name",
+      "email": "Email",
+      "roles": "Roles",
+      "none": "none"
+    },
+    "ui": {
+      "title": "UI services",
+      "text": "ToastService and ConfirmService work from any component.",
+      "toast": "Show a toast",
+      "confirm": "Ask to confirm"
+    },
+    "toast": {
+      "title": "Saved",
+      "text": "Toasts close after a few seconds."
+    },
+    "confirm": {
+      "title": "Delete the example?",
+      "message": "Nothing is deleted; this shows the dialog.",
+      "action": "Delete",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "subtitle": "Only users with the admin role reach this page.",
+    "callAgain": "Call again",
+    "loading": "Loading",
+    "failed": "Failed",
+    "httpStatus": "HTTP {{ status }}",
+    "unreachable": "API not reachable"
+  }
+}

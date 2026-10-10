@@ -39,7 +39,7 @@ dotnet new install Neillans.Templates.Angular::1.1.0
 ./scripts/verify-templates.sh
 ```
 
-The script packs every template, installs the packages into an isolated template hive, generates each template (including `neillans-api --useSwagger false` and `neillans-angular` with each `--auth` model) outside the repo, checks no packaging files or template directives leak into the output, then builds and tests it. Angular outputs are also linted (ESLint and Prettier). CI runs it in the `template-smoke` job.
+The script packs every template, installs the packages into an isolated template hive, generates each template (including `neillans-api --useSwagger false` and `neillans-angular` with each `--auth` model) outside the repo, checks no packaging files or template directives leak into the output, then builds and tests it. Angular outputs are also linted (ESLint, translation keys and Prettier). CI runs it in the `template-smoke` job.
 
 ## Full demo examples
 

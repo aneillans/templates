@@ -22,14 +22,14 @@ The template supports both, selected by a `dotnet new` parameter (`--auth oidc|p
 - [x] `provideHttpClient(withInterceptors([...]))`. The template does not provide `HttpClient` at all.
 - [x] Router features: `withComponentInputBinding()`, `withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })`.
 - [x] Lazy-loaded routes (`loadComponent`) under a guarded parent route that renders `MainLayoutComponent`, with a `**` fallback.
-- [ ] `provideAppInitializer` chain: load user, deployment config, translations and theme before first render. Each must never throw. Config, user and theme done; translations to follow.
-- [ ] `LOCALE_ID` + `registerLocaleData` (configurable, default `en-GB`).
+- [x] `provideAppInitializer` chain: load user, deployment config, translations and theme before first render. Each must never throw.
+- [x] `LOCALE_ID` + `registerLocaleData` (configurable, default `en-GB`). Per language at runtime: `I18nService` lazy-loads the locale data and `LOCALE_ID` reads it after the initializers.
 
 ## Auth and authorisation
 
 - [x] `authGuard`: redirect to sign-in when there is no user. The template has no guards; `/admin` is open.
 - [x] `adminGuard` (plus `roleGuard(...roles)`): redirect when the user lacks the admin role. Roles come from ID token claims (existing `extractRoles`) in `oidc`, and from userinfo groups or an API call in `proxy`.
-- [ ] `authInterceptor`: `Accept-Language` from the active language (with i18n). Done: 401 triggers re-auth in both models, with a 30-second loop guard. `oidc` attaches the bearer token to `apiBaseUrl` requests only. `proxy` sets `withCredentials` and skips re-auth on the userinfo call.
+- [x] `authInterceptor`: `Accept-Language` from the active language, sent to `apiBaseUrl` requests by a separate `languageInterceptor`. 401 triggers re-auth in both models, with a 30-second loop guard. `oidc` attaches the bearer token to `apiBaseUrl` requests only. `proxy` sets `withCredentials` and skips re-auth on the userinfo call.
 - [ ] Optional: terms-of-service gate (`TermsService`, `termsGuard`, 403 `terms_not_accepted` handling in the interceptor, `/terms` acceptance page, public `/tos` view). Needs a matching API contract in `neillans-api`.
 - [ ] Optional: public `/privacy` page outside the guarded layout, populated from deployment config.
 
@@ -42,15 +42,15 @@ The template supports both, selected by a `dotnet new` parameter (`--auth oidc|p
 - [x] `ToastService` + `ToastContainerComponent`.
 - [x] `ConfirmService` (promise-based) + `ConfirmDialogComponent` (Escape cancels, focus starts on Cancel).
 - [x] `PageHeaderComponent`, `EmptyStateComponent`, `StatusBadgeComponent`, using signal `input()`.
-- [x] `index.html`: title and description from `--title`, SVG favicon, apple-touch-icon, theme colour. `lang` stays `en` until i18n sets it.
-- [x] `--title` parameter (defaults to the project name in title case) and `AppTitleStrategy` (`<page> · <app title>`). i18n will translate the page part.
+- [x] `index.html`: title and description from `--title`, SVG favicon, apple-touch-icon, theme colour. `I18nService` sets `lang` at startup.
+- [x] `--title` parameter (defaults to the project name in title case) and `AppTitleStrategy` (`<translated page> · <app title>`).
 
 ## Internationalisation
 
-- [ ] Transloco (`@jsverse/transloco`) with an HTTP loader reading `public/i18n/<lang>.json`, so one build serves every language.
-- [ ] `TranslatedTitleStrategy`: route `title` values are translation keys, page title is `<translated> · <AppName>`.
-- [ ] `src/testing/transloco-testing.ts` helper for specs.
-- [ ] `scripts/check-i18n-keys.mjs`: fails on missing or unused keys. Wire into `npm run lint`.
+- [x] Transloco (`@jsverse/transloco`) with an HTTP loader reading `public/i18n/<lang>.json`, so one build serves every language. Language comes from the stored choice, then `DEFAULT_LANGUAGE`; `LANGUAGES` narrows the offer per deployment. A top-bar picker appears with more than one language; switching reloads.
+- [x] Translated page titles: route `title` values are translation keys (`marker(...)`), and `AppTitleStrategy` renders `<translated> · <AppName>`.
+- [x] `src/testing/transloco-testing.ts` helper for specs.
+- [x] `scripts/check-i18n-keys.mjs`: fails on missing or unused keys. Wired into `npm run lint`.
 - [ ] Optional: `scripts/check-uk-english.mjs` spelling check.
 - [ ] Optional: `crowdin.yml` template.
 
@@ -91,7 +91,7 @@ The template supports both, selected by a `dotnet new` parameter (`--auth oidc|p
 - [x] Husky pre-commit + `lint-staged`. `scripts/install-git-hooks.mjs` installs the hook only when the app is at or directly under the git root, so it never touches this repo's hooks.
 - [x] `.editorconfig`.
 - [ ] `.vscode/` (`extensions.json`, `launch.json`, `tasks.json`).
-- [ ] Specs for i18n setup. Guards, interceptor, both auth services, deployment config, theme, toast, confirm (service and dialog) and the layout are covered.
+- [x] Specs for i18n setup. Guards, interceptors, both auth services, deployment config, i18n, title strategy, theme, toast, confirm (service and dialog) and the layout are covered.
 
 ## CI/CD (generated project)
 

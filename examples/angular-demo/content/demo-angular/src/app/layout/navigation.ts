@@ -1,6 +1,8 @@
 import { ROLES } from '../core/auth/roles';
+import { marker } from '../core/i18n/languages';
 
 export interface NavItem {
+  /** Translation key. */
   label: string;
   /** Bootstrap Icons class, e.g. `bi-grid-1x2`. */
   icon: string;
@@ -12,6 +14,7 @@ export interface NavItem {
 }
 
 export interface NavSection {
+  /** Translation key. */
   header?: string;
   items: NavItem[];
 }
@@ -19,10 +22,12 @@ export interface NavSection {
 /** Sidebar menu. Sections whose items are all hidden for the current user are dropped. */
 export const NAVIGATION: NavSection[] = [
   {
-    items: [{ label: 'Dashboard', icon: 'bi-grid-1x2', link: '/', exact: true }],
+    items: [{ label: marker('nav.dashboard'), icon: 'bi-grid-1x2', link: '/', exact: true }],
   },
   {
-    header: 'Administration',
-    items: [{ label: 'Admin', icon: 'bi-shield-lock', link: '/admin', roles: [ROLES.admin] }],
+    header: marker('nav.administration'),
+    items: [
+      { label: marker('nav.admin'), icon: 'bi-shield-lock', link: '/admin', roles: [ROLES.admin] },
+    ],
   },
 ];

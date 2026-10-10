@@ -35,5 +35,5 @@ export function testUser(overrides: Partial<AuthUser> = {}): AuthUser {
 
 /** Stand-in for `BROWSER_LOCATION`. */
 export function fakeLocation(origin = 'http://localhost:4200') {
-  return { origin, assign: vi.fn<(url: string | URL) => void>() };
+  return { origin, assign: vi.fn<(url: string | URL) => void>(), reload: vi.fn<() => void>() };
 }

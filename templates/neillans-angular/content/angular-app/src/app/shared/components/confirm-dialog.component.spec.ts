@@ -1,8 +1,11 @@
 import { TestBed } from '@angular/core/testing';
+import { provideTranslocoTesting } from '../../../testing/transloco-testing';
 import { ConfirmService } from '../../core/ui/confirm.service';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 
 describe('ConfirmDialogComponent', () => {
+  beforeEach(() => TestBed.configureTestingModule({ providers: [provideTranslocoTesting()] }));
+
   async function open(kind?: 'danger') {
     const fixture = TestBed.createComponent(ConfirmDialogComponent);
     const confirm = TestBed.inject(ConfirmService);

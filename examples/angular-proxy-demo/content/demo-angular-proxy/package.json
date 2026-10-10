@@ -6,7 +6,7 @@
     "start": "ng serve --host 0.0.0.0 --port 4200",
     "build": "ng build",
     "test": "ng test --watch=false",
-    "lint": "ng lint && prettier --check .",
+    "lint": "ng lint && node scripts/check-i18n-keys.mjs && prettier --check .",
     "format": "prettier --write .",
     "prepare": "node scripts/install-git-hooks.mjs"
   },
@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^22.2.1",
     "@angular/router": "^22.2.1",
     "@fontsource-variable/inter": "^5.3.0",
+    "@jsverse/transloco": "^8.4.0",
     "@popperjs/core": "^2.11.8",
     "angular-auth-oidc-client": "^22.0.1",
     "bootstrap": "^5.3.8",

@@ -1,5 +1,9 @@
 <div class="layout-wrapper">
-  <aside class="app-sidebar" [class.show]="sidebarOpen()" aria-label="Main menu">
+  <aside
+    class="app-sidebar"
+    [class.show]="sidebarOpen()"
+    [attr.aria-label]="'layout.mainMenu' | transloco"
+  >
     <a class="app-sidebar__brand" routerLink="/" (click)="closeSidebar()">
       <img src="favicon.svg" alt="" />
       <span>{{ appTitle }}</span>
@@ -7,7 +11,7 @@
     <ul class="app-menu">
       @for (section of navigation(); track $index) {
         @if (section.header) {
-          <li class="menu-header">{{ section.header }}</li>
+          <li class="menu-header">{{ section.header | transloco }}</li>
         }
         @for (item of section.items; track item.link) {
           <li
@@ -17,7 +21,7 @@
           >
             <a class="menu-link" [routerLink]="item.link" (click)="closeSidebar()">
               <i class="bi {{ item.icon }}" aria-hidden="true"></i>
-              <span>{{ item.label }}</span>
+              <span>{{ item.label | transloco }}</span>
             </a>
           </li>
         }
@@ -29,7 +33,7 @@
     <button
       type="button"
       class="sidebar-backdrop d-xl-none"
-      aria-label="Close menu"
+      [attr.aria-label]="'layout.closeMenu' | transloco"
       (click)="closeSidebar()"
     ></button>
   }
@@ -39,21 +43,55 @@
       <button
         type="button"
         class="btn btn-sm border-0 navbar-toggle-btn me-1"
-        aria-label="Toggle menu"
+        [attr.aria-label]="'layout.toggleMenu' | transloco"
         [attr.aria-expanded]="sidebarOpen()"
         (click)="toggleSidebar()"
       >
         <i class="bi bi-list fs-4" aria-hidden="true"></i>
       </button>
 
-      <div class="dropdown ms-auto">
+      <div class="ms-auto"></div>
+
+      @if (languages().length > 1) {
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-sm border-0 text-body"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            [attr.aria-label]="'layout.language' | transloco: { language: language().label }"
+            [title]="'layout.languageMenu' | transloco"
+          >
+            <i class="bi bi-translate fs-5" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            @for (option of languages(); track option.id) {
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item"
+                  [class.active]="language().id === option.id"
+                  [attr.lang]="option.id"
+                  (click)="setLanguage(option.id)"
+                >
+                  {{ option.label }}
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+
+      <div class="dropdown">
         <button
           type="button"
           class="btn btn-sm border-0 text-body"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          [attr.aria-label]="'Colour theme: ' + currentTheme().label"
-          title="Colour theme"
+          [attr.aria-label]="
+            'layout.theme.current' | transloco: { theme: currentTheme().label | transloco }
+          "
+          [title]="'layout.theme.menu' | transloco"
         >
           <i class="bi fs-5 {{ currentTheme().icon }}" aria-hidden="true"></i>
         </button>
@@ -66,7 +104,8 @@
                 [class.active]="themeMode() === option.mode"
                 (click)="setTheme(option.mode)"
               >
-                <i class="bi {{ option.icon }}" aria-hidden="true"></i>{{ option.label }}
+                <i class="bi {{ option.icon }}" aria-hidden="true"></i
+                >{{ option.label | transloco }}
               </button>
             </li>
           }
@@ -79,7 +118,7 @@
           class="btn btn-link text-decoration-none d-flex align-items-center gap-2 p-1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          aria-label="Account menu"
+          [attr.aria-label]="'layout.accountMenu' | transloco"
         >
           <span class="avatar avatar-sm" aria-hidden="true">{{ initials() }}</span>
           <span class="d-none d-md-flex flex-column text-start lh-1 min-w-0">
@@ -100,7 +139,8 @@
           <li><hr class="dropdown-divider" /></li>
           <li>
             <button type="button" class="dropdown-item text-danger" (click)="signOut()">
-              <i class="bi bi-box-arrow-right me-2" aria-hidden="true"></i>Sign out
+              <i class="bi bi-box-arrow-right me-2" aria-hidden="true"></i
+              >{{ 'layout.signOut' | transloco }}
             </button>
           </li>
         </ul>

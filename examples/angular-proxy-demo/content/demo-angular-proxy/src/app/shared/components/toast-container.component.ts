@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { ToastKind, ToastService } from '../../core/ui/toast.service';
 
 const ICONS: Record<ToastKind, string> = {
@@ -11,6 +12,7 @@ const ICONS: Record<ToastKind, string> = {
 /** Renders ToastService's toasts. Placed once, in AppComponent. */
 @Component({
   selector: 'app-toast-container',
+  imports: [TranslocoPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="toast-container position-fixed top-0 end-0 p-3" aria-live="polite">
@@ -25,7 +27,7 @@ const ICONS: Record<ToastKind, string> = {
             <button
               type="button"
               class="btn-close"
-              aria-label="Close"
+              [attr.aria-label]="'common.close' | transloco"
               (click)="toasts.dismiss(toast.id)"
             ></button>
           </div>

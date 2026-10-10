@@ -14,6 +14,8 @@ SNIPPETS=/etc/nginx/snippets
 # ENV_VAR:configKey pairs. To add a setting, add it here and to DeploymentConfig.
 MAPPINGS="
 API_BASE_URL:apiBaseUrl
+DEFAULT_LANGUAGE:defaultLanguage
+LANGUAGES:languages
 #if (AuthOidc)
 OIDC_AUTHORITY:oidcAuthority
 OIDC_CLIENT_ID:oidcClientId
