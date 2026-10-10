@@ -6,11 +6,13 @@ import {
   inject,
   viewChild,
 } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { ConfirmService } from '../../core/ui/confirm.service';
 
 /** Renders ConfirmService's current request as a modal. Placed once, in AppComponent. */
 @Component({
   selector: 'app-confirm-dialog',
+  imports: [TranslocoPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { '(document:keydown.escape)': 'confirm.respond(false)' },
   template: `
@@ -29,7 +31,7 @@ import { ConfirmService } from '../../core/ui/confirm.service';
               <button
                 type="button"
                 class="btn-close"
-                aria-label="Close"
+                [attr.aria-label]="'common.close' | transloco"
                 (click)="confirm.respond(false)"
               ></button>
             </div>
@@ -43,14 +45,14 @@ import { ConfirmService } from '../../core/ui/confirm.service';
                 class="btn btn-outline-secondary"
                 (click)="confirm.respond(false)"
               >
-                {{ request.cancelText || 'Cancel' }}
+                {{ request.cancelText || ('common.cancel' | transloco) }}
               </button>
               <button
                 type="button"
                 class="btn btn-{{ request.kind || 'primary' }}"
                 (click)="confirm.respond(true)"
               >
-                {{ request.confirmText || 'Confirm' }}
+                {{ request.confirmText || ('common.confirm' | transloco) }}
               </button>
             </div>
           </div>

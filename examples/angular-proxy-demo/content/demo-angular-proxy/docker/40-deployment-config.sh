@@ -14,6 +14,8 @@ SNIPPETS=/etc/nginx/snippets
 # ENV_VAR:configKey pairs. To add a setting, add it here and to DeploymentConfig.
 MAPPINGS="
 API_BASE_URL:apiBaseUrl
+DEFAULT_LANGUAGE:defaultLanguage
+LANGUAGES:languages
 AUTH_PROXY_BASE_PATH:authProxyBasePath
 AUTH_PROXY_SIGN_OUT_REDIRECT:authProxySignOutRedirect
 "

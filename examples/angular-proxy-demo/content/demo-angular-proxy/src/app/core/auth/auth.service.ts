@@ -14,10 +14,10 @@ export interface AuthUser {
 }
 
 /**
- * Browser navigation used for sign-in/out redirects. A token so tests can swap it for a stub
- * instead of navigating jsdom.
+ * Browser navigation used for sign-in/out redirects and reloads. A token so tests can swap it for
+ * a stub instead of navigating jsdom.
  */
-export const BROWSER_LOCATION = new InjectionToken<Pick<Location, 'assign' | 'origin'>>(
+export const BROWSER_LOCATION = new InjectionToken<Pick<Location, 'assign' | 'origin' | 'reload'>>(
   'BROWSER_LOCATION',
   { factory: () => inject(DOCUMENT).defaultView!.location },
 );
