@@ -47,7 +47,7 @@ UI text comes from `public/i18n/<language>.json` through Transloco's HTTP loader
 ## Database strategy
 
 - Default provider is PostgreSQL (`Npgsql.EntityFrameworkCore.PostgreSQL`).
-- MySQL is available by setting `Database:Provider` to `MySql`. It uses Oracle's `MySql.EntityFrameworkCore` provider, which tracks EF Core releases. Pomelo was dropped because it has no EF Core 10 release.
+- MySQL is available by setting `Database:Provider` to `MySql`. It uses Oracle's `MySql.EntityFrameworkCore` provider, which tracks EF Core releases. Pomelo was dropped because it has no EF Core 10 release. `MySql.Data` pulls in a vulnerable `BouncyCastle.Cryptography` (2.6.2), so every project referencing the provider pins `BouncyCastle.Cryptography` 2.7.0 directly. Drop the pin once `MySql.Data` ships with a patched version.
 - All EF Core packages stay on the same major version as the target framework.
 - Template code avoids hard dependency on a single relational engine.
 

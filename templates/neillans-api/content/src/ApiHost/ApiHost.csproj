@@ -13,5 +13,7 @@
 <!--#endif -->
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="10.0.9" />
+    <!-- Pin transitive dependency of MySql.Data to patched version (Snyk) -->
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.7.0" />
   </ItemGroup>
 </Project>
