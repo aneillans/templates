@@ -15,8 +15,14 @@ dotnet new install ./templates/neillans-angular/content
 ```bash
 dotnet new neillans-api -n MyCompany.Api
 dotnet new neillans-mvc -n MyCompany.Web
-dotnet new neillans-angular -n mycompany-spa
+dotnet new neillans-angular -n mycompany-spa                # auth in the SPA (default)
+dotnet new neillans-angular -n mycompany-spa --auth proxy   # auth offloaded to oauth2-proxy
+dotnet new neillans-angular -n mycompany-spa --title "MyCompany Portal"
 ```
+
+`--title` sets the display name used for the brand, page titles and footer. It defaults to the project name in title case (`mycompany-spa` becomes `Mycompany Spa`).
+
+`--auth` is chosen at generation time. Switching later means regenerating, or copying the other model's `auth.providers.ts` and auth service from a freshly generated project. Feature code is unaffected either way.
 
 ## Update templates in a consumer machine
 
@@ -33,7 +39,7 @@ dotnet new install Neillans.Templates.Angular::1.1.0
 ./scripts/verify-templates.sh
 ```
 
-The script packs every template, installs the packages into an isolated template hive, generates each template (including `neillans-api --useSwagger false`) outside the repo, checks no packaging files leak into the output, then builds and tests it. CI runs it in the `template-smoke` job.
+The script packs every template, installs the packages into an isolated template hive, generates each template (including `neillans-api --useSwagger false` and `neillans-angular` with each `--auth` model) outside the repo, checks no packaging files or template directives leak into the output, then builds and tests it. Angular outputs are also linted (ESLint and Prettier). CI runs it in the `template-smoke` job.
 
 ## Full demo examples
 
@@ -42,5 +48,6 @@ This repo also includes full generated examples that can be run directly:
 - `examples/api-demo/content`
 - `examples/mvc-demo/content`
 - `examples/angular-demo/content/demo-angular`
+- `examples/angular-proxy-demo/content/demo-angular-proxy`
 
 See `examples/README.md` for run and validation commands.

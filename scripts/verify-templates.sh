@@ -54,10 +54,32 @@ new neillans-mvc -n Smoke.Mvc -o "${OUT}/Smoke.Mvc"
 assert_clean_output "${OUT}/Smoke.Mvc"
 dotnet test "${OUT}/Smoke.Mvc/Smoke.Mvc.sln"
 
-new neillans-angular -n smoke-spa -o "${OUT}/smoke-spa"
-assert_clean_output "${OUT}/smoke-spa"
-npm --prefix "${OUT}/smoke-spa/smoke-spa" ci
-npm --prefix "${OUT}/smoke-spa/smoke-spa" run build
-npm --prefix "${OUT}/smoke-spa/smoke-spa" test
+# Fails if template preprocessor directives survived into generated output.
+assert_no_directives() {
+  if grep -rnE '^\s*(//)?#(if|else|elif|endif)\b|<!--#' "$1" --exclude-dir=node_modules; then
+    echo "Generated output $1 still contains template directives." >&2
+    exit 1
+  fi
+}
+
+for auth in oidc proxy; do
+  name="smoke-spa-${auth}"
+  new neillans-angular -n "${name}" --auth "${auth}" -o "${OUT}/${name}"
+  assert_clean_output "${OUT}/${name}"
+  assert_no_directives "${OUT}/${name}"
+  npm --prefix "${OUT}/${name}/${name}" ci
+  npm --prefix "${OUT}/${name}/${name}" run lint
+  npm --prefix "${OUT}/${name}/${name}" run build
+  npm --prefix "${OUT}/${name}/${name}" test
+done
+
+if grep -rq "ProxyAuthService\|authProxyBasePath" "${OUT}/smoke-spa-oidc/smoke-spa-oidc/src"; then
+  echo "--auth oidc output references the proxy model." >&2
+  exit 1
+fi
+if grep -rq "OidcSecurityService\|oidcAuthority" "${OUT}/smoke-spa-proxy/smoke-spa-proxy/src"; then
+  echo "--auth proxy output references the oidc model." >&2
+  exit 1
+fi
 
 echo "Template smoke tests completed successfully."

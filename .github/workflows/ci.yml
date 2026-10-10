@@ -46,13 +46,19 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: templates/neillans-angular/content/angular-app/package.json
+          cache-dependency-path: templates/neillans-angular/content/angular-app/package-lock.json
 
       - name: Install
-        run: npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
 
       - name: Build
         run: npm run build
+
+      - name: Test
+        run: npm test
 
   template-smoke:
     runs-on: ubuntu-latest
@@ -87,7 +93,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: examples/angular-demo/content/demo-angular/package-lock.json
+          cache-dependency-path: |
+            examples/angular-demo/content/demo-angular/package-lock.json
+            examples/angular-proxy-demo/content/demo-angular-proxy/package-lock.json
 
       - name: Validate API demo
         run: |
@@ -101,8 +109,16 @@ jobs:
           dotnet build examples/mvc-demo/content/DemoMvc.sln -c Release --no-restore
           dotnet test examples/mvc-demo/content/tests/DemoMvc.Tests/DemoMvc.Tests.csproj -c Release --no-build
 
-      - name: Validate Angular demo
+      - name: Validate Angular demo (--auth oidc)
         run: |
-          npm --prefix examples/angular-demo/content/demo-angular install
+          npm --prefix examples/angular-demo/content/demo-angular ci
+          npm --prefix examples/angular-demo/content/demo-angular run lint
           npm --prefix examples/angular-demo/content/demo-angular run build
           npm --prefix examples/angular-demo/content/demo-angular test
+
+      - name: Validate Angular demo (--auth proxy)
+        run: |
+          npm --prefix examples/angular-proxy-demo/content/demo-angular-proxy ci
+          npm --prefix examples/angular-proxy-demo/content/demo-angular-proxy run lint
+          npm --prefix examples/angular-proxy-demo/content/demo-angular-proxy run build
+          npm --prefix examples/angular-proxy-demo/content/demo-angular-proxy test

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo Angular Proxy</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Demo Angular Proxy" />
+    <meta name="theme-color" content="#8c57ff" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <script>
+      // Applies the stored (or OS) colour scheme before first paint; ThemeService takes over after
+      // boot. The key matches THEME_STORAGE_KEY in src/app/core/theme/theme.service.ts.
+      (function () {
+        var mode = null;
+        try {
+          mode = localStorage.getItem('demo-angular-proxy.theme');
+        } catch (e) {}
+        var dark =
+          mode === 'dark' ||
+          (mode !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

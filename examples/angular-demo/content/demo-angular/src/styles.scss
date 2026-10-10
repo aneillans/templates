@@ -1,0 +1,15 @@
+// Global styles: Bootstrap 5.3 with Materio-inspired overrides.
+// Change the look in styles/_materio-variables.scss and styles/_materio-theme.scss; this file only
+// wires them together, so Bootstrap can be upgraded without merging.
+@use 'sass:map';
+@use 'sass:meta';
+@use './styles/materio-variables' as vars;
+
+// Bootstrap 5.3 is not a Sass module, so it is loaded with meta.load-css and the overrides passed
+// as configuration. Variables Bootstrap does not declare are removed first.
+$bootstrap-config: map.remove(meta.module-variables('vars'), 'app-dark-text');
+@include meta.load-css('bootstrap/scss/bootstrap', $with: $bootstrap-config);
+@include meta.load-css('bootstrap-icons/font/bootstrap-icons');
+@include meta.load-css('@fontsource-variable/inter/index.css');
+// After Bootstrap so its rules override the defaults.
+@include meta.load-css('./styles/materio-theme');

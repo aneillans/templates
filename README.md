@@ -18,7 +18,7 @@ Reusable templates and building blocks for new projects with .NET 10 and Angular
 - `src/building-blocks`: shared NuGet packages for auth and data provider abstractions.
 - `templates/neillans-api`: `dotnet new` API template.
 - `templates/neillans-mvc`: `dotnet new` MVC template.
-- `templates/neillans-angular`: Angular + docker template content.
+- `templates/neillans-angular`: Angular + docker template content, with auth in the SPA (`--auth oidc`) or offloaded to oauth2-proxy (`--auth proxy`).
 - `examples`: full generated demos used to validate template output end-to-end.
 - `docs`: usage and maintenance guidance.
 

@@ -5,8 +5,8 @@
     <PackageId>Neillans.Templates.Angular</PackageId>
     <Version>1.1.0</Version>
     <Authors>Neillans</Authors>
-    <Description>Neillans Angular SPA template with OIDC and Docker.</Description>
-    <PackageTags>dotnet-new;template;angular;oidc;keycloak;docker</PackageTags>
+    <Description>Neillans Angular SPA template with OIDC (in the SPA or via oauth2-proxy) and Docker.</Description>
+    <PackageTags>dotnet-new;template;angular;oidc;oauth2-proxy;keycloak;docker</PackageTags>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
     <IncludeContentInPack>true</IncludeContentInPack>

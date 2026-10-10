@@ -96,6 +96,46 @@
           }
         }
       ]
+    },
+    {
+      "clientId": "oauth2-proxy",
+      "name": "oauth2-proxy edge (Angular --auth proxy)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "oauth2-proxy-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:4180/oauth2/callback"],
+      "webOrigins": ["+"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:4180/*##http://localhost:4200/*"
+      },
+      "protocolMappers": [
+        {
+          "name": "realm-roles-as-roles",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "config": {
+            "claim.name": "roles",
+            "multivalued": "true",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "audience-api-host",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "api-host",
+            "access.token.claim": "true"
+          }
+        }
+      ]
     }
   ],
   "users": [

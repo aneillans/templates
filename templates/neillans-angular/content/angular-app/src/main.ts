@@ -1,26 +1,7 @@
-import { provideZonelessChangeDetection } from '@angular/core';
+// Bootstrap's dropdown behaviour (data-bs-toggle="dropdown"). Import other plugins the same way.
+import 'bootstrap/js/src/dropdown.js';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { provideAuth } from 'angular-auth-oidc-client';
 import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes';
-import { environment } from './environments/environment';
+import { appConfig } from './app/app.config';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideZonelessChangeDetection(),
-    provideRouter(routes),
-    provideAuth({
-      config: {
-        authority: environment.oidc.authority,
-        redirectUrl: window.location.origin,
-        postLogoutRedirectUri: window.location.origin,
-        clientId: environment.oidc.clientId,
-        scope: 'openid profile roles',
-        responseType: 'code',
-        silentRenew: true,
-        useRefreshToken: true,
-      },
-    }),
-  ],
-}).catch((error: unknown) => console.error(error));
+bootstrapApplication(AppComponent, appConfig).catch((error: unknown) => console.error(error));
